@@ -126,16 +126,20 @@ hilarity = [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns] -
 
 -- Custom length
 length' xs = sum [1 | _ <- xs]
--- ghci> length' "hello, world"
--- 12    
--- ghci>
+{- 
+  ghci> length' "hello, world"
+  12    
+  ghci>
+-}
 
 removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']]
--- ghci> removeNonUppercase "Hahaha! Ahahaha!"
--- "HA"  
--- ghci> removeNonUppercase "IdontLIKEFROGS"  
--- "ILIKEFROGS"
--- ghci>
+{- 
+  ghci> removeNonUppercase "Hahaha! Ahahaha!"
+  "HA"  
+  ghci> removeNonUppercase "IdontLIKEFROGS"  
+  "ILIKEFROGS"
+  ghci>
+-} 
 
 -- Nested comprehension. Removing all odd numbers without flattening
 xxs   = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]] 
@@ -160,9 +164,8 @@ zipUnequal = zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"] -- [(5,"im"),(3,"a"
 -- Zipping infinite and finite lists works like normal. (Haskell is lazy and only grabs what it needs to match the list lengths)
 zipToInfinite = zip [1..] ["apple", "orange", "cherry", "mango"] -- [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
 
--- Here's a problem that combines tuples and list comprehensions: 
---  Which right triangle that has integers for all sides and all sides equal to or smaller than 10 has a perimeter of 24?
 
+----- Which right triangle that has integers for all sides and all sides equal to or smaller than 10 has a perimeter of 24? -----
 -- Generate all triangles with sides equal to or smaller than 10
 triangles = [(a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10]] -- a lot. check in GHCI
 -- Generate all right triangles, B < C and A < B
